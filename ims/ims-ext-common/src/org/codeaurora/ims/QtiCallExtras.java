@@ -41,4 +41,9 @@ public class QtiCallExtras {
 
     /* Call Diversion Info extra key. The value will be a ArrayList of Strings. */
     public static final String EXTRAS_CALL_DIVERSION_INFO = "CallDiversionInfo";
+
+    /* Call audio quality extra key. The value will be an Integer.
+     * {@link QtiCallConstants#CALL_AUDIO_QUALITY_*}
+     */
+    public static final String EXTRAS_CALL_AUDIO_QUALITY = "CallAudioQuality";
 }
