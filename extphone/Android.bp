@@ -4,13 +4,14 @@ java_library {
     provides_uses_lib: "com.qti.extphone.extphonelib",
     installable: true,
     sdk_version: "system_current",
-
+    libs: [
+        "framework-annotations-lib",
+    ],
     srcs: [
         "src/com/**/*.java",
         "src/com/**/I*.aidl",
     ],
     system_ext_specific: true,
-
 }
 
 java_library {
@@ -18,13 +19,14 @@ java_library {
     provides_uses_lib: "com.qti.extphone.extphonelib-product",
     installable: true,
     sdk_version: "system_current",
-
+    libs: [
+        "framework-annotations-lib",
+    ],
     srcs: [
         "src/com/**/*.java",
         "src/com/**/I*.aidl",
     ],
     product_specific: true,
-
 }
 
 // ==========================================
@@ -37,7 +39,6 @@ prebuilt_etc {
     src: "extphonelib.xml",
     sub_dir: "permissions",
     system_ext_specific: true,
-
 }
 
 prebuilt_etc {
@@ -49,6 +50,4 @@ prebuilt_etc {
     src: "extphonelib_product.xml",
     sub_dir: "permissions",
     product_specific: true,
-
 }
-

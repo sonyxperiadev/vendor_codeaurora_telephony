@@ -340,6 +340,68 @@ interface IExtPhone {
      */
     void setSmartDdsSwitchToggle(boolean isEnabled, in Client client);
 
+    /**
+     * Turns the airplane mode on or off
+     *
+     * @param - on is the status of the airplane mode, true: on, false: off
+     * @return - boolean value indicating whether the operation was successful
+     *         true - success
+     *         false - failure
+     */
+    boolean setAirplaneMode(boolean on);
+
+    /**
+     * Checks whether the airplane mode is on
+     *
+     * @return - boolean value indicating whether the airplane mode is on
+     */
+    boolean getAirplaneMode();
+
+    /**
+     * Checks whether SIM is PIN1 locked
+     *
+     * @param - subId is the subscription to be queried
+     * @return - boolean value indicating whether the SIM PIN1 is enabled
+     *         true - PIN1 active
+     *         false - PIN1 inactive
+     */
+    boolean checkSimPinLockStatus(int subId);
+
+    /**
+     * Locks/unlocks SIM with the given PIN1
+     *
+     * @param - subId is the subscription to be queried
+     * @param - enabled true: lock SIM, false: unlock SIM
+     * @param - pin is the SIM PIN1
+     * @return - boolean the result of enabling or disabling the SIM PIN1 lock
+     *         true - success
+     *         false - failure
+     */
+    boolean toggleSimPinLock(int subId, boolean enabled, String pin);
+
+    /**
+     * Verifies whether the supplied SIM PIN1 is correct
+     *
+     * @param - subId is the subscription to be queried
+     * @param - pin is the SIM PIN1 to be verified
+     * @return - boolean value indicating whether the SIM PIN1 is correct
+     *         true - PIN1 correct
+     *         false - PIN1 incorrect
+     */
+    boolean verifySimPin(int subId, String pin);
+
+    /**
+     * Verifies whether the supplied SIM PUK1 is correct and allows changing of PIN1
+     *
+     * @param - subId is the subscription to be queried
+     * @param - puk is the SIM PUK1 to be verified
+     * @param - newPin is the new SIM PIN1 to be set
+     * @return - boolean value indicating whether the operation was successful
+     *         true - success
+     *         false - failure
+     */
+    boolean verifySimPukChangePin(int subId, String puk, String newPin);
+
     boolean isFeatureSupported(int feature);
 
    /**
