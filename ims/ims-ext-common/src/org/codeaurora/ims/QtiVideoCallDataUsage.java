@@ -25,6 +25,10 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * Changes from Qualcomm Innovation Center are provided under the following license:
+ * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * SPDX-License_Identifier: BSD-3-Clause-Clear
  */
 
 package org.codeaurora.ims;
@@ -40,10 +44,12 @@ import android.os.Parcelable;
 public class QtiVideoCallDataUsage implements Parcelable {
 
     private long[] mDataUsage;
-    public static final int DATA_USAGE_LTE = 0;
+    public static final int DATA_USAGE_WWAN = 0;
     public static final int DATA_USAGE_WLAN = 1;
+    public static final int DATA_USAGE_C_IWLAN = 2;
     public static final int DATA_USAGE_INVALID_VALUE = -1;
-    private static final String[] TEXT = {"LteDataUsage = "," WlanDataUsage = "};
+    private static final String[] TEXT =
+            {"WwanDataUsage = "," WlanDataUsage = ", " CIWlanDataUsage = "};
 
     public QtiVideoCallDataUsage(long[] dUsage) {
         if (dUsage == null || dUsage.length == 0 ) {
@@ -57,10 +63,10 @@ public class QtiVideoCallDataUsage implements Parcelable {
     }
 
     /*
-     * This method returns LTE Data Usage
+     * This method returns WWAN Data Usage
      */
-    public long getLteDataUsage() {
-        return mDataUsage.length > DATA_USAGE_LTE ? mDataUsage[DATA_USAGE_LTE] :
+    public long getWwanDataUsage() {
+        return mDataUsage.length > DATA_USAGE_WWAN ? mDataUsage[DATA_USAGE_WWAN] :
                 DATA_USAGE_INVALID_VALUE;
     }
 
@@ -69,6 +75,14 @@ public class QtiVideoCallDataUsage implements Parcelable {
      */
     public long getWlanDataUsage() {
         return mDataUsage.length > DATA_USAGE_WLAN ? mDataUsage[DATA_USAGE_WLAN] :
+                DATA_USAGE_INVALID_VALUE;
+    }
+
+    /*
+     * This method returns C_IWLAN Data Usage
+     */
+    public long getCiwlanDataUsage() {
+        return mDataUsage.length > DATA_USAGE_C_IWLAN ? mDataUsage[DATA_USAGE_C_IWLAN] :
                 DATA_USAGE_INVALID_VALUE;
     }
 
