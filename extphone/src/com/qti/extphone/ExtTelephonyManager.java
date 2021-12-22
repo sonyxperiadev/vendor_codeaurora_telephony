@@ -141,7 +141,7 @@ public class ExtTelephonyManager {
         }
         try {
             ret = mExtTelephonyService.isFeatureSupported(feature);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "isFeatureSupported, remote exception", e);
         }
         return ret;
@@ -268,7 +268,7 @@ public class ExtTelephonyManager {
         log("getPropertyValueInt: property=" + property);
         try {
             ret = mExtTelephonyService.getPropertyValueInt(property, def);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "getPropertyValueInt, remote exception", e);
         }
         return ret;
@@ -289,7 +289,7 @@ public class ExtTelephonyManager {
         log("getPropertyValueBool: property=" + property);
         try {
             ret = mExtTelephonyService.getPropertyValueBool(property, def);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "getPropertyValueBool, remote exception", e);
         }
         return ret;
@@ -310,7 +310,7 @@ public class ExtTelephonyManager {
         log("getPropertyValueString: property=" + property);
         try {
             ret = mExtTelephonyService.getPropertyValueString(property, def);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "getPropertyValueString, remote exception", e);
         }
         return ret;
@@ -329,7 +329,7 @@ public class ExtTelephonyManager {
         }
         try {
             ret = mExtTelephonyService.isPrimaryCarrierSlotId(slotId);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "isPrimaryCarrierSlotId, remote exception", e);
         }
         return ret;
@@ -348,7 +348,7 @@ public class ExtTelephonyManager {
         }
         try {
             ret = mExtTelephonyService.getCurrentPrimaryCardSlotId();
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "getCurrentPrimaryCardSlotId, remote exception", e);
         }
         return ret;
@@ -367,7 +367,7 @@ public class ExtTelephonyManager {
         }
         try {
             ret = mExtTelephonyService.getPrimaryCarrierSlotId();
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "getPrimaryCarrierSlotId, remote exception", e);
         }
         return ret;
@@ -385,7 +385,7 @@ public class ExtTelephonyManager {
         }
         try {
             mExtTelephonyService.setPrimaryCardOnSlot(slotId);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "setPrimaryCardOnSlot, remote exception", e);
         }
     }
@@ -405,7 +405,7 @@ public class ExtTelephonyManager {
         }
         try {
             ret = mExtTelephonyService.performIncrementalScan(slotId);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "performIncrementalScan, remote exception", e);
         }
         return ret;
@@ -426,7 +426,7 @@ public class ExtTelephonyManager {
         }
         try {
             ret = mExtTelephonyService.abortIncrementalScan(slotId);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "abortIncrementalScan, remote exception", e);
         }
         return ret;
@@ -447,7 +447,7 @@ public class ExtTelephonyManager {
         }
         try {
             ret = mExtTelephonyService.isSMSPromptEnabled();
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "isSMSPromptEnabled, remote exception", e);
         }
         return ret;
@@ -467,7 +467,7 @@ public class ExtTelephonyManager {
         }
         try {
             mExtTelephonyService.setSMSPromptEnabled(enabled);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "setSMSPromptEnabled, remote exception", e);
         }
     }
@@ -489,7 +489,7 @@ public class ExtTelephonyManager {
         try {
             mExtTelephonyService.supplyIccDepersonalization(netpin,
                     type, callback, phoneId);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "supplyIccDepersonalization, remote exception", e);
         }
     }
@@ -502,7 +502,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.enableEndc(slot, enable, client);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "enableEndc, remote exception", e);
         }
         return token;
@@ -516,7 +516,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.queryNrIconType(slot, client);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "queryNrIconType, remote exception", e);
         }
         return token;
@@ -530,7 +530,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.queryEndcStatus(slot, client);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "queryEndcStatus, remote exception", e);
         }
         return token;
@@ -544,7 +544,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.setNrConfig(slot, config, client);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "setNrConfig, remote exception", e);
         }
         return token;
@@ -558,7 +558,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.queryNrConfig(slot, client);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "queryNrConfig, remote exception", e);
         }
         return token;
@@ -572,7 +572,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.sendCdmaSms(slot, pdu, expectMore, client);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "sendCdmaSms, remote exception", e);
         }
         return token;
@@ -596,7 +596,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.enable5g(slot, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "enable5g, remote exception", e);
         }
         return token;
@@ -610,7 +610,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.disable5g(slot, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "disable5g, remote exception", e);
         }
         return token;
@@ -624,7 +624,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.queryNrBearerAllocation(slot, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "queryNrBearerAllocation, remote exception", e);
         }
         return token;
@@ -639,7 +639,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.setCarrierInfoForImsiEncryption(slot, info, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "setCarrierInfoForImsiEncryption, remote exception", e);
         }
         return token;
@@ -653,7 +653,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.enable5gOnly(slot, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "enable5gOnly, remote exception", e);
         }
         return token;
@@ -667,7 +667,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.query5gStatus(slot, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "query5gStatus, remote exception", e);
         }
         return token;
@@ -681,7 +681,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.queryNrDcParam(slot, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "queryNrDcParam, remote exception", e);
         }
         return token;
@@ -695,7 +695,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.queryNrSignalStrength(slot, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "queryNrSignalStrength, remote exception", e);
         }
         return token;
@@ -709,7 +709,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.queryUpperLayerIndInfo(slot, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "queryUpperLayerIndInfo, remote exception", e);
         }
         return token;
@@ -723,7 +723,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.query5gConfigInfo(slot, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             Log.e(LOG_TAG, "query5gConfigInfo, remote exception", e);
         }
         return token;
@@ -734,7 +734,7 @@ public class ExtTelephonyManager {
         try {
             mExtTelephonyService.queryCallForwardStatus(slotId, cfReason, serviceClass, number,
                     expectMore, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             throw new RemoteException("queryCallForwardStatus ended in remote exception");
         }
     }
@@ -745,7 +745,7 @@ public class ExtTelephonyManager {
         try {
             mExtTelephonyService.getFacilityLockForApp(slotId, facility, password, serviceClass,
                     appId, expectMore, client);
-        } catch(RemoteException e){
+        } catch (RemoteException e){
             throw new RemoteException("getFacilityLockForApp ended in remote exception");
         }
     }
@@ -795,7 +795,7 @@ public class ExtTelephonyManager {
         }
         try {
             token = mExtTelephonyService.getDdsSwitchCapability(slot, client);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "getDdsSwitchCapability, remote exception", e);
         }
         return token;
@@ -811,8 +811,8 @@ public class ExtTelephonyManager {
         try {
             token = mExtTelephonyService.sendUserPreferenceForDataDuringVoiceCall(slot,
                     userPreference, client);
-        } catch(RemoteException e) {
-            Log.e(LOG_TAG, "getDdsSwitchCapability, remote exception", e);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "sendUserPreferenceForDataDuringVoiceCall, remote exception", e);
         }
         return token;
     }
@@ -880,11 +880,24 @@ public class ExtTelephonyManager {
         }
         try {
             support = mExtTelephonyService.isEpdgOverCellularDataSupported(slot);
-        } catch(RemoteException e) {
-            Log.e(LOG_TAG, "isEpdgOverCellularDataSupported, remote exception");
-            e.printStackTrace();
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "isEpdgOverCellularDataSupported, remote exception", e);
         }
         return support;
+    }
+
+    public Token getSecureModeStatus(Client client) throws RemoteException {
+        Token token = null;
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "service not connected!");
+            return token;
+        }
+        try {
+            token = mExtTelephonyService.getSecureModeStatus(client);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "getSecureModeStatus ended in remote exception", e);
+        }
+        return token;
     }
 
     public Client registerCallback(String packageName, IExtPhoneCallback callback) {
@@ -895,7 +908,7 @@ public class ExtTelephonyManager {
         }
         try {
             client = mExtTelephonyService.registerCallback(packageName, callback);
-        } catch(RemoteException e) {
+        } catch (RemoteException e) {
             Log.e(LOG_TAG, "registerCallback, remote exception", e);
         }
         return client;
@@ -908,8 +921,34 @@ public class ExtTelephonyManager {
         }
         try {
             mExtTelephonyService.unRegisterCallback(callback);
-        } catch(RemoteException e) {
-            Log.e(LOG_TAG, "unRegisterCallback, remote exception", e);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "unRegisterCallback, remote exception ", e);
+        }
+    }
+
+    public Client registerQtiRadioConfigCallback(String packageName, IExtPhoneCallback callback) {
+        Client client = null;
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "Service not connected!");
+            return client;
+        }
+        try {
+            client = mExtTelephonyService.registerQtiRadioConfigCallback(packageName, callback);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "registerQtiRadioConfigCallback, remote exception", e);
+        }
+        return client;
+    }
+
+    public void unregisterQtiRadioConfigCallback(IExtPhoneCallback callback) {
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "Service not connected!");
+            return;
+        }
+        try {
+            mExtTelephonyService.unregisterQtiRadioConfigCallback(callback);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "unregisterQtiRadioConfigCallback, remote exception", e);
         }
     }
 

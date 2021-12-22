@@ -164,7 +164,7 @@ interface IExtPhoneCallback {
 
     /**
      * Response to setSmartDdsSwitchToggle
-     * @param - token is the same token which is recived in setSmartDdsSwitchToggle
+     * @param - token is the same token which is received in setSmartDdsSwitchToggle
      * @param - result SUCCESS/FAILURE based on the CnE HAL response
      */
     void setSmartDdsSwitchToggleResponse(in Token token, boolean result);
@@ -235,4 +235,19 @@ interface IExtPhoneCallback {
      * @param - support support indicates if the feature is supported or not.
      */
     void onEpdgOverCellularDataSupported(int slotId, boolean support);
+
+    /**
+     * Response to getSecureModeStatus
+     * @param - token is the same token which is received in setSmartDdsSwitchToggle
+     * @param - status SUCCESS/FAILURE based on RIL data module response
+     * @param - enableStatus Secure Mode status - true: enabled, false: disabled
+     */
+    void getSecureModeStatusResponse(in Token token, in Status status, boolean enableStatus);
+
+    /**
+     * Indicates that the device has entered/exited Secure Mode
+     *
+     * @param - enabled true/false whether Secure Mode is on/off
+     */
+    void onSecureModeStatusChange(boolean enabled);
 }

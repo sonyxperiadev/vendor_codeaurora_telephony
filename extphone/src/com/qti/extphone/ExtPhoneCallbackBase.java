@@ -198,4 +198,13 @@ public class ExtPhoneCallbackBase extends IExtPhoneCallback.Stub {
     public void onEpdgOverCellularDataSupported(int slotId, boolean support)
             throws RemoteException {
     }
+
+    @Override
+    public void getSecureModeStatusResponse(Token token, Status status, boolean enableStatus)
+            throws RemoteException {
+    }
+
+    @Override
+    public void onSecureModeStatusChange(boolean enabled) throws RemoteException {
+    }
 }
