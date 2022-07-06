@@ -27,6 +27,13 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/*
+ * Changes from Qualcomm Innovation Center are provided under the following license:
+ *
+ * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause-Clear
+ */
+
 package com.qti.extphone;
 
 import android.telephony.ImsiEncryptionInfo;
@@ -37,6 +44,7 @@ import com.qti.extphone.IDepersoResCallback;
 import com.qti.extphone.IExtPhoneCallback;
 import com.qti.extphone.NrConfig;
 import com.qti.extphone.QtiImeiInfo;
+import com.qti.extphone.QtiSetNetworkSelectionMode;
 
 interface IExtPhone {
 
@@ -116,6 +124,63 @@ interface IExtPhone {
     * Requires permission: android.Manifest.permission.MODIFY_PHONE_STATE
     */
     boolean abortIncrementalScan(int slotId);
+
+    /**
+    * Perform incremental scan using QTI Radio.
+    * @param - slot
+    *          Range: 0 <= slot < {@link TelephonyManager#getActiveModemCount()}
+    * @param - networkScanRequest Network scan request
+    * @param - client registered with packagename to receive callbacks.
+    * @return Integer Token to be used to compare with the response.
+    * Requires permission: android.Manifest.permission.MODIFY_PHONE_STATE
+    */
+    Token startNetworkScan(int slot, in NetworkScanRequest networkScanRequest, in Client client);
+
+    /**
+    * Perform stop network scan using QTI Radio.
+    * @param - slot
+    *          Range: 0 <= slot < {@link TelephonyManager#getActiveModemCount()}
+    * @param - client registered with packagename to receive callbacks.
+    * @return Integer Token to be used to compare with the response.
+    * Requires permission: android.Manifest.permission.MODIFY_PHONE_STATE
+    */
+    Token stopNetworkScan(int slot, in Client client);
+
+    /**
+    * Perform Manual network selection using QTI Radio.
+    * @param - slot
+    *          Range: 0 <= slot < {@link TelephonyManager#getActiveModemCount()}
+    * @param - mode defines the AccessMode , Operator MccMnc, RAT,
+    *          CAG id of the cell, SNPN Network Id.
+    * @param - client registered with packagename to receive callbacks.
+    * @return Integer Token to be used to compare with the response.
+    * Requires permission: android.Manifest.permission.MODIFY_PHONE_STATE
+    */
+    Token setNetworkSelectionModeManual(int slot, in QtiSetNetworkSelectionMode mode,
+            in Client client);
+
+    /**
+    * Perform automatic network selection using QTI Radio.
+    * @param - slotId
+    *          Range: 0 <= slotId < {@link TelephonyManager#getActiveModemCount()}
+    * @param - accessType defines access type.
+    * @param - client registered with packagename to receive
+    *         callbacks.
+    * @return Integer Token to be used to compare with the response.
+    * Requires permission: android.Manifest.permission.MODIFY_PHONE_STATE
+    */
+    Token setNetworkSelectionModeAutomatic(int slotId, in int accessType, in Client client);
+
+    /**
+    * Get network selection mode using QTI Radio.
+    * @param - slotId
+    *          Range: 0 <= slotId < {@link TelephonyManager#getActiveModemCount()}
+    *  @param - client registered with packagename to receive
+    *         callbacks.
+    * @return Integer Token to be used to compare with the response.
+    * Requires permission: android.Manifest.permission.MODIFY_PHONE_STATE
+    */
+    Token getNetworkSelectionMode(int slotId, in Client client);
 
     /**
     * Check for Sms Prompt is Enabled or Not.

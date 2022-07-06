@@ -27,6 +27,13 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/*
+ * Changes from Qualcomm Innovation Center are provided under the following license:
+ *
+ * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause-Clear
+ */
+
 package com.qti.extphone;
 
 import android.annotation.RequiresPermission;
@@ -39,6 +46,7 @@ import android.os.IBinder;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.telephony.ImsiEncryptionInfo;
+import android.telephony.NetworkScanRequest;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -93,6 +101,12 @@ public class ExtTelephonyManager {
      */
     public static final String ACTION_SHOW_NOTICE_SCM_BLOCK_OTHERS =
             "org.codeaurora.intent.action.SHOW_NOTICE_SCM_BLOCK_OTHERS";
+
+    /** PLMN access mode */
+    public static final int ACCESS_MODE_PLMN = 1;
+
+    /** SNPN access mode */
+    public static final int ACCESS_MODE_SNPN = 2;
 
     /**
     * Constructor
@@ -550,6 +564,34 @@ public class ExtTelephonyManager {
         return token;
     }
 
+    public Token setNetworkSelectionModeAutomatic(int slot, int accessType, Client client) {
+        Token token = null;
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "service not connected!");
+            return token;
+        }
+        try {
+            token = mExtTelephonyService.setNetworkSelectionModeAutomatic(slot, accessType, client);
+        } catch(RemoteException e) {
+            Log.e(LOG_TAG, "setNetworkSelectionModeAutomatic, remote exception", e);
+        }
+        return token;
+    }
+
+    public Token getNetworkSelectionMode(int slot, Client client) {
+        Token token = null;
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "service not connected!");
+            return token;
+        }
+        try {
+            token = mExtTelephonyService.getNetworkSelectionMode(slot, client);
+        } catch(RemoteException e) {
+            Log.e(LOG_TAG, "getNetworkSelectionMode, remote exception", e);
+        }
+        return token;
+    }
+
     public Token queryNrConfig(int slot, Client client) {
         Token token = null;
         if (!isServiceConnected()) {
@@ -574,6 +616,49 @@ public class ExtTelephonyManager {
             token = mExtTelephonyService.sendCdmaSms(slot, pdu, expectMore, client);
         } catch (RemoteException e) {
             Log.e(LOG_TAG, "sendCdmaSms, remote exception", e);
+        }
+        return token;
+    }
+
+    public Token startNetworkScan(int slot, NetworkScanRequest networkScanRequest, Client client) {
+        Token token = null;
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "service not connected!");
+            return token;
+        }
+        try {
+            token = mExtTelephonyService.startNetworkScan(slot, networkScanRequest, client);
+        } catch(RemoteException e) {
+            Log.e(LOG_TAG, "startNetworkScan, remote exception", e);
+        }
+        return token;
+    }
+
+    public Token stopNetworkScan(int slot, Client client) {
+        Token token = null;
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "service not connected!");
+            return token;
+        }
+        try {
+            token = mExtTelephonyService.stopNetworkScan(slot, client);
+        } catch(RemoteException e) {
+            Log.e(LOG_TAG, "stopNetworkScan, remote exception", e);
+        }
+        return token;
+    }
+
+    public Token setNetworkSelectionModeManual(int slot, QtiSetNetworkSelectionMode mode,
+            Client client) {
+        Token token = null;
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "service not connected!");
+            return token;
+        }
+        try {
+            token = mExtTelephonyService.setNetworkSelectionModeManual(slot, mode, client);
+        } catch(RemoteException e) {
+            Log.e(LOG_TAG, "startNetworkScan, remote exception", e);
         }
         return token;
     }

@@ -27,13 +27,22 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/*
+ * Changes from Qualcomm Innovation Center are provided under the following license:
+ *
+ * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause-Clear
+ */
+
 package com.qti.extphone;
 
 import android.os.RemoteException;
+import android.telephony.CellInfo;
 import android.util.Log;
 import com.qti.extphone.BearerAllocationStatus;
 import com.qti.extphone.DcParam;
 import com.qti.extphone.IExtPhoneCallback;
+import com.qti.extphone.NetworkSelectionMode;
 import com.qti.extphone.NrConfig;
 import com.qti.extphone.NrConfigType;
 import com.qti.extphone.NrIconType;
@@ -42,6 +51,7 @@ import com.qti.extphone.SignalStrength;
 import com.qti.extphone.Status;
 import com.qti.extphone.Token;
 import com.qti.extphone.UpperLayerIndInfo;
+import java.util.List;
 
 public class ExtPhoneCallbackBase extends IExtPhoneCallback.Stub {
     private static final String TAG = "ExtPhoneCallbackBase";
@@ -206,5 +216,35 @@ public class ExtPhoneCallbackBase extends IExtPhoneCallback.Stub {
 
     @Override
     public void onSecureModeStatusChange(boolean enabled) throws RemoteException {
+    }
+
+    @Override
+    public void startNetworkScanResponse(int slotId, Token token, int errorCode) throws
+            RemoteException {
+    }
+
+    @Override
+    public void stopNetworkScanResponse(int slotId, Token token, int errorCode) throws
+            RemoteException {
+    }
+
+    @Override
+    public void setNetworkSelectionModeManualResponse(int slotId, Token token, int errorCode) throws
+            RemoteException {
+    }
+
+    @Override
+    public void setNetworkSelectionModeAutomaticResponse(int slotId, Token token,
+            int errorCode) throws RemoteException {
+    }
+
+    @Override
+    public void getNetworkSelectionModeResponse(int slotId, Token token, Status status,
+            NetworkSelectionMode modes) throws RemoteException {
+    }
+
+    @Override
+    public void networkScanResult(int slotId, Token token, int status, int error,
+            List<CellInfo> cellInfos) throws RemoteException {
     }
 }

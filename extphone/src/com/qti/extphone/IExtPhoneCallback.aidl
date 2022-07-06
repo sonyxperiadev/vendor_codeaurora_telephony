@@ -27,10 +27,19 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/*
+ * Changes from Qualcomm Innovation Center are provided under the following license:
+ *
+ * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause-Clear
+ */
+
 package com.qti.extphone;
 
+import android.telephony.CellInfo;
 import com.qti.extphone.BearerAllocationStatus;
 import com.qti.extphone.DcParam;
+import com.qti.extphone.NetworkSelectionMode;
 import com.qti.extphone.NrConfig;
 import com.qti.extphone.NrConfigType;
 import com.qti.extphone.NrIconType;
@@ -42,6 +51,7 @@ import com.qti.extphone.SmsResult;
 import com.qti.extphone.Status;
 import com.qti.extphone.Token;
 import com.qti.extphone.UpperLayerIndInfo;
+import java.util.List;
 
 interface IExtPhoneCallback {
 
@@ -250,4 +260,57 @@ interface IExtPhoneCallback {
      * @param - enabled true/false whether Secure Mode is on/off
      */
     void onSecureModeStatusChange(boolean enabled);
+
+    /**
+    * Response to startNetworkScan
+    * @param - slotId
+    * @param - token is the same token which is recived in startNetworkScan
+    * @param - errorCode
+    */
+    void startNetworkScanResponse(int slotId, in Token token, in int errorCode);
+
+    /**
+    * Response to stopNetworkScan
+    * @param - slotId
+    * @param - token is the same token which is recived in startNetworkScan
+    * @param - errorCode
+    */
+    void stopNetworkScanResponse(int slotId, in Token token, in int errorCode);
+
+    /**
+    * Response to setNetworkSelectionModeAutomatic
+    * @param - slotId
+    * @param - token is the same token which is recived in setNetworkSelectionModeAutomatic
+    * @param - errorCode
+    */
+    void setNetworkSelectionModeAutomaticResponse(int slotId, in Token token, in int errorCode);
+
+    /**
+    * Response to setNetworkSelectionModeManual
+    * @param - slotId
+    * @param - token is the same token which is recived in setNetworkSelectionModeManual
+    * @param - errorCode
+    */
+    void setNetworkSelectionModeManualResponse(int slotId, in Token token, in int errorCode);
+
+    /**
+    * Response to getNetworkSelectionMode
+    * @param - slotId
+    * @param - token is the same token which is recived in getNetworkSelectionMode
+    * @param - status SUCCESS/FAILURE based on the modem Result code
+    * @param - modes Network selection mode
+    */
+    void getNetworkSelectionModeResponse(int slotId, in Token token, in Status status,
+            in NetworkSelectionMode modes);
+
+    /**
+    * Indicates network scan results
+    * @param - slotId
+    * @param - token
+    * @param - status SUCCESS/FAILURE based on the modem Result code
+    * @param - error error code
+    * @param - cellInfos is Cell information
+    */
+    void networkScanResult(int slotId, in Token token, in int status, in int error,
+            in List<CellInfo> cellInfos);
 }
