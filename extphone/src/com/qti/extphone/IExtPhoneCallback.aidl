@@ -313,4 +313,12 @@ interface IExtPhoneCallback {
     */
     void networkScanResult(int slotId, in Token token, in int status, in int error,
             in List<CellInfo> cellInfos);
+
+     /**
+     * Response to setMsimPreference
+     *
+     * @param - token is the same token which is received in setMsimPreference
+     * @param - status SUCCESS/FAILURE based on RIL NAS module response
+     */
+    void setMsimPreferenceResponse(in Token token, in Status status);
 }

@@ -42,6 +42,7 @@ import com.qti.extphone.Token;
 import com.qti.extphone.Client;
 import com.qti.extphone.IDepersoResCallback;
 import com.qti.extphone.IExtPhoneCallback;
+import com.qti.extphone.MsimPreference;
 import com.qti.extphone.NrConfig;
 import com.qti.extphone.QtiImeiInfo;
 import com.qti.extphone.QtiSetNetworkSelectionMode;
@@ -524,4 +525,13 @@ interface IExtPhone {
      * @return - Integer Token can be used to compare with the response.
      */
     Token getSecureModeStatus(in Client client);
+
+    /**
+     * Set MSIM preference to either DSDS or DSDA
+     *
+     * @param client - Client registered with package name to receive callbacks.
+     * @param pref - MsimPreference contains either DSDA or DSDS to be set.
+     * @return - Integer Token can be used to compare with the response.
+     */
+    Token setMsimPreference(in Client client, in MsimPreference pref);
 }

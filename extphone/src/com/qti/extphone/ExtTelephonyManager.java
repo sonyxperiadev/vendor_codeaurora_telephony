@@ -49,10 +49,13 @@ import android.telephony.ImsiEncryptionInfo;
 import android.telephony.NetworkScanRequest;
 import android.util.Log;
 
+import com.qti.extphone.MsimPreference;
+
+import java.lang.Integer;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
 * ExtTelephonyManager class provides ExtTelephonyService interface to
@@ -981,6 +984,20 @@ public class ExtTelephonyManager {
             token = mExtTelephonyService.getSecureModeStatus(client);
         } catch (RemoteException e) {
             Log.e(LOG_TAG, "getSecureModeStatus ended in remote exception", e);
+        }
+        return token;
+    }
+
+    public Token setMsimPreference(Client client, MsimPreference pref) throws RemoteException {
+        Token token = null;
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "service not connected!");
+            return token;
+        }
+        try {
+            token = mExtTelephonyService.setMsimPreference(client, pref);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "setMsimPreference ended in remote exception", e);
         }
         return token;
     }

@@ -247,4 +247,8 @@ public class ExtPhoneCallbackBase extends IExtPhoneCallback.Stub {
     public void networkScanResult(int slotId, Token token, int status, int error,
             List<CellInfo> cellInfos) throws RemoteException {
     }
+
+    @Override
+    public void setMsimPreferenceResponse(Token token, Status status) throws RemoteException {
+    }
 }
