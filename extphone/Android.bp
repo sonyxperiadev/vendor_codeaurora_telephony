@@ -11,6 +11,11 @@ java_library {
         "src/com/**/*.java",
         "src/com/**/I*.aidl",
     ],
+
+    static_libs: [
+        "android.hardware.radio-V1.6-java",
+    ],
+
     system_ext_specific: true,
 }
 
@@ -26,6 +31,11 @@ java_library {
         "src/com/**/*.java",
         "src/com/**/I*.aidl",
     ],
+
+    static_libs: [
+        "android.hardware.radio-V1.6-java",
+    ],
+
     product_specific: true,
 }
 

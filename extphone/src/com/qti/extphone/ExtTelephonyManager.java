@@ -976,6 +976,21 @@ public class ExtTelephonyManager {
         return support;
     }
 
+    public Token getQosParameters(int slotId, int cid, Client client) throws RemoteException {
+        Log.d(LOG_TAG, "[" + slotId + "] getQosParameters, cid: " + cid);
+        Token token = null;
+        if (!isServiceConnected()) {
+            Log.e(LOG_TAG, "service not connected!");
+            return token;
+        }
+        try {
+            token = mExtTelephonyService.getQosParameters(slotId, cid, client);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "getQosParameters ended in remote exception", e);
+        }
+        return token;
+    }
+
     public Token getSecureModeStatus(Client client) throws RemoteException {
         Token token = null;
         if (!isServiceConnected()) {

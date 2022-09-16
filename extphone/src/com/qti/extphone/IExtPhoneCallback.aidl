@@ -43,8 +43,9 @@ import com.qti.extphone.NetworkSelectionMode;
 import com.qti.extphone.NrConfig;
 import com.qti.extphone.NrConfigType;
 import com.qti.extphone.NrIconType;
-import com.qti.extphone.QtiCallForwardInfo;
 import com.qti.extphone.QRadioResponseInfo;
+import com.qti.extphone.QosParametersResult;
+import com.qti.extphone.QtiCallForwardInfo;
 import com.qti.extphone.QtiImeiInfo;
 import com.qti.extphone.SignalStrength;
 import com.qti.extphone.SmsResult;
@@ -245,6 +246,26 @@ interface IExtPhoneCallback {
      * @param - support support indicates if the feature is supported or not.
      */
     void onEpdgOverCellularDataSupported(int slotId, boolean support);
+
+    /**
+     * Response to IExtPhone.getQosParameters() request
+     *
+     * @param slotId
+     * @param token is the same token which is received in getQosParameters request
+     * @param status SUCCESS/FAILURE based on the modem result code
+     * @param result QosParametersResult containing the requested QoS parameters
+     */
+    void getQosParametersResponse(int slotId, in Token token, in Status status,
+                                  in QosParametersResult result);
+
+    /**
+     * Indication received when QoS parameters have changed for a given connection id
+     *
+     * @param slotId
+     * @param cid Connection id for which the QoS parameters have changed
+     * @param result QosParametersResult containing the updated QoS parameters
+     */
+    void onQosParametersChanged(int slotId, int cid, in QosParametersResult result);
 
     /**
      * Response to getSecureModeStatus

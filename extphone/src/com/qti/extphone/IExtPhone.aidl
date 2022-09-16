@@ -519,6 +519,15 @@ interface IExtPhone {
      boolean isEpdgOverCellularDataSupported(int slotId);
 
     /**
+     * Request for QoS parameters for a particular data call.
+     *
+     * @param - slotId slot ID
+     * @param - cid connection id of the data call for which the QoS parameters are requested
+     * @return - Integer Token to be used to map the response.
+     */
+     Token getQosParameters(int slot, int cid, in Client client);
+
+    /**
      * Query the status of Secure Mode
      *
      * @param client - Client registered with package name to receive callbacks
