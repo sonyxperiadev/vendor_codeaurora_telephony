@@ -261,4 +261,12 @@ public class ExtPhoneCallbackBase extends IExtPhoneCallback.Stub {
     public void onQosParametersChanged(int slotId, int cid, QosParametersResult result)
             throws RemoteException {
     }
+
+    @Override
+    public void setSimTypeResponse(Token token, Status status) throws RemoteException {
+    }
+
+    @Override
+    public void onSimTypeChanged(QtiSimType[] simtype) throws RemoteException {
+    }
 }

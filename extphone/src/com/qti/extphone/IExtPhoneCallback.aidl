@@ -48,6 +48,7 @@ import com.qti.extphone.QosParametersResult;
 import com.qti.extphone.QtiCallForwardInfo;
 import com.qti.extphone.QtiImeiInfo;
 import com.qti.extphone.SignalStrength;
+import com.qti.extphone.QtiSimType;
 import com.qti.extphone.SmsResult;
 import com.qti.extphone.Status;
 import com.qti.extphone.Token;
@@ -342,4 +343,20 @@ interface IExtPhoneCallback {
      * @param - status SUCCESS/FAILURE based on RIL NAS module response
      */
     void setMsimPreferenceResponse(in Token token, in Status status);
+
+
+    /**
+     * Response to setSimType
+     *
+     * @param - token is the same token which is received in setSimType
+     * @param - status SUCCESS/FAILURE based on below layers response
+     */
+    void setSimTypeResponse(in Token token, in Status status);
+
+    /**
+     * Indication sent when Sim Type on a slot changes.
+     *
+     * @param - simtype array contains the current Sim Type on each Slot
+     */
+    void onSimTypeChanged(in QtiSimType[] simtype);
 }

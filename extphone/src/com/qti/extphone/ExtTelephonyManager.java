@@ -1019,6 +1019,72 @@ public class ExtTelephonyManager {
         return token;
     }
 
+   /**
+    * Get the supported Sim Type information on all available slots
+    *
+    * @return - Array of SimType corresponds to each Slot, the supported
+    *           Sim Types are Physical/eSIM or iUICC or both.
+    *
+    * Requires Permission: android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE
+    */
+    public QtiSimType[] getSupportedSimTypes() {
+        if (isServiceConnected()) {
+            try {
+                return mExtTelephonyService.getSupportedSimTypes();
+            } catch (RemoteException e) {
+                Log.e(LOG_TAG, "getSupportedSimTypes ended in remote exception", e);
+            }
+        } else {
+            Log.e(LOG_TAG, "service not connected!");
+        }
+        return null;
+    }
+
+   /**
+    * Get current active Sim Type, Physical/eSIM or iUICC
+    *
+    * @return - Array of SimType corresponds to each Slot.
+    *
+    * Requires Permission: android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE
+    */
+    public QtiSimType[] getCurrentSimType() {
+        if (isServiceConnected()) {
+            try {
+                return mExtTelephonyService.getCurrentSimType();
+            } catch (RemoteException e) {
+                Log.e(LOG_TAG, "getCurrentSimType ended in remote exception", e);
+            }
+        } else {
+            Log.e(LOG_TAG, "getCurrentSimType, service not connected!");
+        }
+        return null;
+    }
+
+   /**
+    * Set SIM Type to either Physical/eSIM or iUICC
+    *
+    * @param client - Client registered with package name to receive callbacks.
+    * @param simType - QtiSimType array contains the SimType to be set for all the slots.
+    * @return - Integer Token can be used to compare with the response, null Token value
+    *        can be returned if request cannot be processed.
+    *
+    * @Response would be sent over IExtPhoneCallback.setSimTypeResponse()
+    *
+    * Requires Permission: android.Manifest.permission.MODIFY_PHONE_STATE
+    */
+    public Token setSimType(Client client, QtiSimType[] simType) throws RemoteException {
+        if (isServiceConnected()) {
+            try {
+                return mExtTelephonyService.setSimType(client, simType);
+            } catch (RemoteException e) {
+                Log.e(LOG_TAG, "setSimType ended in remote exception", e);
+            }
+        } else {
+            Log.e(LOG_TAG, "setSimType, service not connected!");
+        }
+        return null;
+    }
+
     public Client registerCallback(String packageName, IExtPhoneCallback callback) {
         Client client = null;
         if (!isServiceConnected()) {
